@@ -23,7 +23,7 @@ export default function App() {
   };
 
   return (
-    <>
+    <div className="max-w-4xl mx-auto">
       <h1>Image to WebP</h1>
       <Label>Upload Images</Label>
       <Input
@@ -34,6 +34,7 @@ export default function App() {
         aria-describedby="file-upload-description"
         onChange={handleInputChange}
       />
+      <Label>Total: {images.length}</Label>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
         <Button>Convert All</Button>
         <Button>Delete All</Button>
@@ -45,7 +46,12 @@ export default function App() {
             <CardHeader>
               <CardTitle>{f.name}</CardTitle>
             </CardHeader>
-            <CardContent></CardContent>
+            <CardContent>
+              <img
+                src={URL.createObjectURL(f)}
+                className="h-full object-contain mx-auto"
+              />
+            </CardContent>
             <CardFooter className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2">
               <Button>Convert</Button>
               <Button>Delete</Button>
@@ -54,6 +60,6 @@ export default function App() {
           </Card>
         ))}
       </div>
-    </>
+    </div>
   );
 }
