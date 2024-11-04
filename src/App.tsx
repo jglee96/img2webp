@@ -34,11 +34,23 @@ export default function App() {
         aria-describedby="file-upload-description"
         onChange={handleInputChange}
       />
-      <Button>Convert</Button>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+        <Button>Convert All</Button>
+        <Button>Delete All</Button>
+        <Button>Download All</Button>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
         {images.map((f) => (
           <Card key={f.lastModified}>
-            <CardTitle>{f.name}</CardTitle>
+            <CardHeader>
+              <CardTitle>{f.name}</CardTitle>
+            </CardHeader>
+            <CardContent></CardContent>
+            <CardFooter className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2">
+              <Button>Convert</Button>
+              <Button>Delete</Button>
+              <Button>Download</Button>
+            </CardFooter>
           </Card>
         ))}
       </div>
